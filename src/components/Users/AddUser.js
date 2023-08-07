@@ -10,6 +10,7 @@ const AddUser = (props) => {
 
   const nameInputRef = useRef();
   const ageInputRef = useRef();
+  const collegeInputRef = useRef();
 
   // const [enteredUsername, setEnteredUsername] = useState('');
   // const [enteredAge, setEnteredAge] = useState('');
@@ -20,6 +21,7 @@ const AddUser = (props) => {
 
     const enterdName = nameInputRef.current.value;
     const enteredUserName = ageInputRef.current.value;
+    const enteredCollege = collegeInputRef.current.value;
 
     if (enterdName.trim().length === 0 || enteredUserName.trim().length === 0) {
       setError({
@@ -35,9 +37,10 @@ const AddUser = (props) => {
       });
       return;
     }
-    props.onAddUser(enterdName, enteredUserName);
+    props.onAddUser(enterdName, enteredUserName,enteredCollege);
     nameInputRef.current.value='';
     ageInputRef.current.value='';
+    collegeInputRef.current.value='';
     // setEnteredUsername('');
     // setEnteredAge('');
   };
@@ -81,6 +84,8 @@ const AddUser = (props) => {
             // onChange={ageChangeHandler}
             ref={ageInputRef}
           />
+          <label htmlFor='college'>College</label>
+          <input id='college' type='text' ref={collegeInputRef}/>
           <Button type="submit">Add User</Button>
         </form>
       </Card>
